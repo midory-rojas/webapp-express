@@ -30,7 +30,19 @@ function show(req, res, next) {
         }
 
         const movie = results[0];
-        res.json(movie) //Si va tutto bene inviamo il resultato
+
+        //Se la movie è stata trovata, recuperiamo le recensioni
+
+        const reviewsQuery = "SELECT * FROM `reviews` WHERE `movie_id` = ?";
+
+        connection.query(reviewsQuery, [id], (err, reviewsResult) => {
+            if  (err) return next(err);//Si c'è errore ritorniamo con NEXT
+
+            res.json({ //Creiamo un nuovo oggetto, dove passiamo tutti i dati di movie con lo spread operator(...)
+                ...movie,
+                reviews: reviewsResult, //Inseriamo il risulato di reviewsResult
+            })
+        })
     })
 }
 

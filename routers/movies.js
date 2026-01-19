@@ -3,7 +3,9 @@ import movieController from "../controller/movieController.js"; //importo movieC
 
 const router = express.Router();
 
-router.get("/", movieController.index);
-router.get("/:id", movieController.show);
+router.get("/", movieController.index); //Impostiamo index
+router.get("/:id", movieController.show); //Impostiamo show
+
+
 
 export default router;
