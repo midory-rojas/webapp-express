@@ -13,8 +13,25 @@ function index(req, res, next) {
 
 }
 
-function show(req, res) {
-    console.log("Ciao sono show");
+function show(req, res, next) {
+    const id = req.params.id;
+
+    const query = "SELECT * FROM `movies` WHERE `id` = ?"; //Inseriamo a ID perche la show restituisce il detaglio di una movie con l'ID
+
+    connection.query(query, [id], (err, results) => {
+        if (err) return next(err); //Si c'è il errore lo mandiamo avanti con NEXT
+
+        if (results.length === 0) { 
+            res.status(404);
+            return res.json({
+                error: "NOT FOUND",
+                message: "Movie not found"
+            });
+        }
+
+        const movie = results[0];
+        res.json(movie) //Si va tutto bene inviamo il resultato
+    })
 }
 
 export default { index, show }

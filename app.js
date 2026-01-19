@@ -13,8 +13,8 @@ app.use("/api/movies", moviesRouter);
 
 app.listen(port, (err) => {
     if (err) {
-        return console.error(`Error durante l'avvio del server:`, err);
+        return console.error(`Error while starting the server`, err);
     } else {
-        console.log(`Íl server è partito sulla porta ${port}`);
+        console.log(`Server is listening on port ${port}`);
     }
 });
