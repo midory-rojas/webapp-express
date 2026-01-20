@@ -2,6 +2,7 @@ import express from "express"; //Importo express
 import moviesRouter from "./routers/movies.js"; //Importo moviesRouter
 import handleError from "./middlewares/handleError.js"; //Importo handleError error-500
 import notFound from "./middlewares/routeNotFound.js"; //Importo notFound error-400
+import cors from "cors";
 
 
 //Invoco express
@@ -9,6 +10,12 @@ const app = express();
 
 //Creo la porta 3000
 const port = process.env.SERVER_PORT;
+
+app.use(
+    cors({
+    origin: "http://localhost:5173",
+}),
+)
 
 app.use("/api/movies", moviesRouter);
 
