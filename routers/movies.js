@@ -4,7 +4,7 @@ import movieController from "../controller/movieController.js"; //importo movieC
 const router = express.Router();
 
 router.get("/", movieController.index); //Impostiamo index
-router.get("/:id", movieController.show); //Impostiamo show
+router.get("/:slug", movieController.show); //Impostiamo show, cambio l'id per lo slug
 
 
 

@@ -11,11 +11,14 @@ const app = express();
 //Creo la porta 3000
 const port = process.env.SERVER_PORT;
 
+//Questo percorso deve stare prima di static
 app.use(
-    cors({
+    cors({                                               
     origin: "http://localhost:5173",
 }),
 )
+//Creo una cartella public per inserire le immagine e accedere facilmente dal browser
+app.use(express.static("public"));
 
 app.use("/api/movies", moviesRouter);
 
