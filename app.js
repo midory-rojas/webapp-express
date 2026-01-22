@@ -20,6 +20,9 @@ app.use(
 //Creo una cartella public per inserire le immagine e accedere facilmente dal browser
 app.use(express.static("public"));
 
+//Impostiamo in app il parser per leggere il body
+app.use(express.json());
+
 app.use("/api/movies", moviesRouter);
 
 app.use(handleError); //Registro alla fine dell' app.js
