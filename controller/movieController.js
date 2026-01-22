@@ -21,6 +21,7 @@ function index(req, res, next) {
 
 }
 
+//Per la show sempre si utiliza lo slug
 function show(req, res, next) {
     // const id = req.params.id. Cambio l'id per lo slug
     const slug = req.params.slug;
